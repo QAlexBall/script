@@ -23,7 +23,7 @@ def generate_restart_command_dict(remote_host, remote_user, ssh_port, tunnel_hos
     d = {}
     for port in port_list:
         # port[0] local_port, port[1] remote_port
-        d[str(port[0])] = f"ssh -Nf -p {ssh_port} {port[0]}:{tunnel_host}:{port[1]} {remote_user}:{remote_host}"
+        d[str(port[0])] = f"ssh -Nf -p {ssh_port} -L {port[0]}:{tunnel_host}:{port[1]} {remote_user}@{remote_host}"
     return d
 
 
